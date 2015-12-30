@@ -1,3 +1,5 @@
+require 'pry'
+
 class CoffeeCup
   attr_reader :amount, :capacity
 
@@ -7,3 +9,5 @@ class CoffeeCup
   end
 
 end
+
+binding.pry
