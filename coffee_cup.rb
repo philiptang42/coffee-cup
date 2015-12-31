@@ -9,9 +9,19 @@ class CoffeeCup
   end
 
   def sip!
-    raw_amount = amount.split('')
-    sipped_amount = raw_amount[0].to_i - 1
-    @amount = sipped_amount.to_s + " oz"
+    unless @amount == "0 oz"
+      raw_amount = amount.split('')
+      sipped_amount = raw_amount[0].to_i - 1
+      @amount = sipped_amount.to_s + " oz"
+    else
+      puts "Hey! You need a refill!"
+      @amount = "0 oz"
+    end
+  end
+
+  def spill!
+    puts "Someone spilled the coffee!"
+    @amount = "0 oz"
   end
 
 end
