@@ -10,33 +10,37 @@ class CoffeeCup
 
   def sip!
     unless @amount == "0 oz"
-      raw_amount = amount.split('')
+      raw_amount = amount.split(' ')
       sipped_amount = raw_amount[0].to_i - 1
       @amount = sipped_amount.to_s + " oz"
     else
       puts "Hey! You need a refill!"
-      @amount = "0 oz"
+      @amount = 0
+      @amount = amount.to_s + " oz"
     end
   end
 
   def spill!
     puts "Someone spilled the coffee!"
-    @amount = "0 oz"
+    @amount = 0
+    @amount = amount.to_s + " oz"
   end
 
   def refill!
-    raw_capacity = @capacity.split('')
-    @capacity = raw_capacity[0].to_i - 2
+    raw_capacity = capacity.split(' ')
+    refill_capacity = raw_capacity[0].to_i - 2
 
-    raw_amount = amount.split('')
+    raw_amount = amount.split(' ')
     @amount = raw_amount[0].to_i
-    if @amount < @capacity
-      until @amount == @capacity
+    if @amount < refill_capacity
+      until @amount == refill_capacity
         @amount += 1
       end
+      puts "Coffee cup refilled to #{amount} oz!"
+      @amount = amount.to_s + " oz"
     else
-      puts "You are at max capacity!"
-      @amount = amount
+      puts "You cannot refill right now!"
+      @amount = amount.to_s + " oz"
     end
   end
 
