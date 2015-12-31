@@ -24,6 +24,22 @@ class CoffeeCup
     @amount = "0 oz"
   end
 
+  def refill!
+    raw_capacity = @capacity.split('')
+    @capacity = raw_capacity[0].to_i - 2
+
+    raw_amount = amount.split('')
+    @amount = raw_amount[0].to_i
+    if @amount < @capacity
+      until @amount == @capacity
+        @amount += 1
+      end
+    else
+      puts "You are at max capacity!"
+      @amount = amount
+    end
+  end
+
 end
 
 binding.pry
